@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="text-center">
+  <h1>Professionals</h1>
+</div>
+
+<br>
+
+<form action="/" method="POST">
+  <div class="form-group">
+    <input name="name" class="form-control input-lg" type="text" placeholder="Enter professionals name" required>
+  </div>
+  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+</form>
+
+<br>
+<hr>
+
+<div>
+  {% for professional in professionals %}
+  <h4 class="well"><strong><a href="{{ url_for('patients', professional_id=professional.id) }}">{{professional.name}}</a></strong></h4>
+  {% endfor %}
+</div>
+
+{% endblock %}
