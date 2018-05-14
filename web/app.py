@@ -32,8 +32,11 @@ def patients(professional_id):
         patient = Patient(name, insurance, sessions, professional_id)
         db.session.add(patient)
         db.session.commit()
+    professional = Professional.query.filter(Professional.id == professional_id).first()
     _patients = Patient.query.filter(Patient.professional_id == professional_id)
-    return render_template('patients.html', patients=_patients, professional_id=professional_id)
+    return render_template(
+        'patients.html', patients=_patients, professional_id=professional_id, professional_name=professional.name
+    )
 
 
 if __name__ == '__main__':
