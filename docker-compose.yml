@@ -25,7 +25,7 @@ nginx:
 data:
   image: postgres:latest
   volumes:
-    - /var/lib/postgresql
+    - data:/var/lib/postgresql
   command: "true"
 
 postgres:
